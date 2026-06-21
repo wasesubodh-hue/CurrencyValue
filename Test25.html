@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>🇮🇳 Mutilated Note Value Calculator - Free Online Tool</title>
+<meta name="description" content="Calculate the value of mutilated Indian currency notes instantly. Free online tool with visual currency selection.">
+<meta name="keywords" content="mutilated note calculator, INR value, damaged currency, note refund">
+
+<!-- Google AdSense (Replace with your own ID) -->
+<meta name="google-adsense-account" content="ca-pub-xxxxxxxxxxxxxxxx">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Mutilated Note Value Calculator">
+<meta property="og:description" content="Calculate the value of mutilated Indian currency notes instantly.">
+<meta property="og:type" content="website">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+--primary: #1a3a5c;
+--primary-light: #2a5a8a;
+--primary-dark: #0f2440;
+--secondary: #1a7a4a;
+--secondary-light: #2a9a5a;
+--gold: #d4a843;
+--gold-light: #f5d68a;
+--danger: #c0392b;
+--success: #27ae60;
+--warning: #f39c12;
+--bg-dark: #0a1628;
+--bg-card: #111d32;
+--bg-input: #0d1a2b;
+--text-primary: #f0f6ff;
+--text-secondary: #8aadcc;
+--text-muted: #5a7f9f;
+--border-color: #1f3450;
+--shadow: 0 20px 60px rgba(0,0,0,0.5);
+--radius: 20px;
+--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+background: var(--bg-dark);
+color: var(--text-primary);
+min-height: 100vh;
+line-height: 1.6;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 10px; }
+
+.app-container {
+max-width: 1400px;
+margin: 0 auto;
+padding: 16px 20px 40px;
+}
+
+/* ===== HEADER ===== */
+.header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 16px;
+padding: 16px 28px;
+background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+border-radius: var(--radius);
+margin-bottom: 24px;
+border: 1px solid var(--border-color);
+position: relative;
+overflow: hidden;
+}
+.header::before {
+content: '';
+position: absolute;
+top: -50%;
+right: -10%;
+width: 300px;
+height: 300px;
+background: radial-gradient(circle, rgba(212, 168, 67, 0.06) 0%, transparent 70%);
+border-radius: 50%;
+}
+.header-left {
+display: flex;
+align-items: center;
+gap: 14px;
+z-index: 1;
+}
+.header-logo {
+width: 50px;
+height: 50px;
+background: linear-gradient(135deg, var(--gold), var(--gold-light));
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 26px;
+color: var(--primary-dark);
+box-shadow: 0 4px 20px rgba(212, 168, 67, 0.25);
+}
+.header-title {
+font-size: 24px;
+font-weight: 800;
+background: linear-gradient(135deg, #ffffff, var(--gold-light));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+letter-spacing: -0.5px;
+}
+.header-subtitle {
+font-size: 13px;
+color: var(--text-secondary);
+font-weight: 400;
+-webkit-text-fill-color: var(--text-secondary);
+}
+.header-right {
+display: flex;
+align-items: center;
+gap: 10px;
+z-index: 1;
+flex-wrap: wrap;
+}
+.header-badge {
+padding: 5px 14px;
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: 40px;
+font-size: 12px;
+color: var(--text-secondary);
+font-weight: 500;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+.header-badge i { font-size: 14px; }
+.header-badge.gold {
+background: rgba(212, 168, 67, 0.12);
+border-color: rgba(212, 168, 67, 0.2);
+color: var(--gold-light);
+}
+
+/* ===== AD ===== */
+.ad-container {
+background: rgba(255,255,255,0.02);
+border: 1px dashed var(--border-color);
+border-radius: 12px;
+padding: 14px;
+text-align: center;
+margin-bottom: 20px;
+min-height: 80px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--text-muted);
+font-size: 13px;
+}
+.ad-container .ad-label {
+font-size: 10px;
+text-transform: uppercase;
+letter-spacing: 1px;
+color: var(--text-muted);
+margin-bottom: 4px;
+}
+
+/* ===== MAIN GRID ===== */
+.main-grid {
+display: grid;
+grid-template-columns: 1.4fr 1fr;
+gap: 24px;
+}
+@media (max-width: 960px) {
+.main-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== CARDS ===== */
+.card {
+background: var(--bg-card);
+border-radius: var(--radius);
+border: 1px solid var(--border-color);
+padding: 22px;
+box-shadow: var(--shadow);
+transition: var(--transition);
+}
+.card:hover {
+border-color: var(--primary-light);
+}
+.card-title {
+font-size: 15px;
+font-weight: 600;
+color: var(--text-secondary);
+margin-bottom: 14px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.card-title i {
+color: var(--gold);
+font-size: 18px;
+}
+
+/* ===== DENOMINATION ===== */
+.denom-tabs {
+display: flex;
+flex-direction: column;
+gap: 16px;
+}
+.denom-series {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+.series-label {
+font-size: 12px;
+font-weight: 600;
+color: var(--text-muted);
+text-transform: uppercase;
+letter-spacing: 0.5px;
+padding: 4px 0;
+border-bottom: 1px solid var(--border-color);
+}
+.denom-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+gap: 10px;
+}
+.denom-btn {
+background: var(--bg-input);
+border: 2px solid var(--border-color);
+border-radius: 14px;
+padding: 10px 6px;
+cursor: pointer;
+transition: var(--transition);
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+.denom-btn:hover {
+border-color: var(--primary-light);
+transform: translateY(-3px);
+box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+.denom-btn.active {
+border-color: var(--gold);
+background: rgba(212, 168, 67, 0.08);
+box-shadow: 0 0 40px rgba(212, 168, 67, 0.08);
+}
+.denom-btn .note-img {
+width: 100%;
+height: 50px;
+object-fit: contain;
+border-radius: 6px;
+margin-bottom: 4px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 32px;
+}
+.denom-btn .note-value {
+font-size: 16px;
+font-weight: 700;
+color: var(--text-primary);
+}
+.denom-btn .note-series {
+font-size: 9px;
+color: var(--text-muted);
+text-transform: uppercase;
+letter-spacing: 0.3px;
+}
+.denom-btn .check-mark {
+position: absolute;
+top: 4px;
+right: 4px;
+width: 20px;
+height: 20px;
+background: var(--gold);
+border-radius: 50%;
+display: none;
+align-items: center;
+justify-content: center;
+font-size: 11px;
+color: var(--primary-dark);
+}
+.denom-btn.active .check-mark {
+display: flex;
+}
+
+/* ===== UPLOAD ===== */
+.upload-area {
+border: 2px dashed var(--border-color);
+border-radius: 16px;
+padding: 32px 20px;
+text-align: center;
+cursor: pointer;
+transition: var(--transition);
+background: var(--bg-input);
+}
+.upload-area:hover {
+border-color: var(--primary-light);
+background: rgba(42, 90, 138, 0.05);
+}
+.upload-area.dragover {
+border-color: var(--gold);
+background: rgba(212, 168, 67, 0.05);
+}
+.upload-area .upload-icon {
+font-size: 40px;
+color: var(--text-muted);
+margin-bottom: 8px;
+}
+.upload-area .upload-text {
+font-size: 15px;
+font-weight: 500;
+color: var(--text-primary);
+}
+.upload-area .upload-sub {
+font-size: 12px;
+color: var(--text-muted);
+margin-top: 2px;
+}
+.upload-area input[type="file"] { display: none; }
+.upload-area .file-name {
+margin-top: 10px;
+padding: 6px 14px;
+background: rgba(46, 204, 113, 0.1);
+border-radius: 8px;
+color: var(--success);
+font-size: 13px;
+display: inline-block;
+}
+.upload-area .file-name.hidden { display: none; }
+
+/* ===== PREVIEW ===== */
+.preview-container {
+margin-top: 14px;
+border-radius: 12px;
+overflow: hidden;
+background: var(--bg-input);
+min-height: 180px;
+display: none;
+position: relative;
+}
+.preview-container.show { display: block; }
+.preview-container canvas {
+width: 100%;
+height: auto;
+display: block;
+}
+.preview-actions {
+display: flex;
+gap: 8px;
+margin-top: 10px;
+flex-wrap: wrap;
+align-items: center;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+padding: 9px 20px;
+border: none;
+border-radius: 12px;
+font-weight: 600;
+font-size: 13px;
+cursor: pointer;
+transition: var(--transition);
+display: inline-flex;
+align-items: center;
+gap: 8px;
+font-family: 'Inter', sans-serif;
+text-decoration: none;
+}
+.btn-primary {
+background: linear-gradient(135deg, var(--primary-light), var(--primary));
+color: white;
+border: 1px solid var(--primary-light);
+}
+.btn-primary:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 30px rgba(42, 90, 138, 0.3);
+}
+.btn-success {
+background: linear-gradient(135deg, var(--secondary-light), var(--secondary));
+color: white;
+border: 1px solid var(--secondary-light);
+}
+.btn-success:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 30px rgba(26, 122, 74, 0.3);
+}
+.btn-gold {
+background: linear-gradient(135deg, var(--gold), #b8922f);
+color: var(--primary-dark);
+border: 1px solid var(--gold);
+}
+.btn-gold:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 30px rgba(212, 168, 67, 0.3);
+}
+.btn-outline {
+background: transparent;
+color: var(--text-secondary);
+border: 1px solid var(--border-color);
+}
+.btn-outline:hover {
+background: var(--bg-input);
+border-color: var(--text-secondary);
+}
+.btn-danger {
+background: var(--danger);
+color: white;
+border: 1px solid var(--danger);
+}
+.btn-danger:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 30px rgba(192, 57, 43, 0.3);
+}
+.btn-sm { padding: 5px 12px; font-size: 11px; }
+.btn-lg { padding: 14px 32px; font-size: 16px; }
+.btn-block { width: 100%; justify-content: center; }
+
+/* ===== RESULT ===== */
+.result-card {
+background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+border-radius: var(--radius);
+padding: 20px;
+border: 1px solid var(--border-color);
+margin-top: 14px;
+}
+.result-value {
+font-size: 38px;
+font-weight: 900;
+color: var(--gold-light);
+display: flex;
+align-items: center;
+gap: 12px;
+flex-wrap: wrap;
+}
+.result-value .badge {
+font-size: 14px;
+padding: 4px 14px;
+border-radius: 40px;
+font-weight: 600;
+}
+.badge-full { background: var(--success); color: white; }
+.badge-half { background: var(--warning); color: var(--primary-dark); }
+.badge-reject { background: var(--danger); color: white; }
+.badge-pending { background: var(--text-muted); color: white; }
+.result-details {
+margin-top: 10px;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+gap: 10px;
+}
+.result-detail-item {
+background: rgba(255,255,255,0.04);
+padding: 8px 12px;
+border-radius: 10px;
+text-align: center;
+}
+.result-detail-item .label {
+font-size: 10px;
+color: var(--text-secondary);
+text-transform: uppercase;
+letter-spacing: 0.5px;
+}
+.result-detail-item .value {
+font-size: 16px;
+font-weight: 700;
+color: var(--text-primary);
+margin-top: 2px;
+}
+
+/* ===== RULES TABLE ===== */
+.rules-table {
+width: 100%;
+border-collapse: collapse;
+font-size: 12px;
+}
+.rules-table th {
+text-align: left;
+padding: 6px 8px;
+color: var(--text-secondary);
+border-bottom: 2px solid var(--border-color);
+font-weight: 600;
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+}
+.rules-table td {
+padding: 6px 8px;
+border-bottom: 1px solid var(--border-color);
+color: var(--text-primary);
+}
+.rules-table tr:last-child td { border-bottom: none; }
+.rules-table .status-dot {
+display: inline-block;
+width: 8px;
+height: 8px;
+border-radius: 50%;
+margin-right: 6px;
+}
+.rules-table .status-dot.full { background: var(--success); }
+.rules-table .status-dot.half { background: var(--warning); }
+.rules-table .status-dot.reject { background: var(--danger); }
+
+/* ===== FOOTER ===== */
+.footer {
+margin-top: 36px;
+padding: 20px 0;
+border-top: 1px solid var(--border-color);
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 12px;
+}
+.footer-text {
+color: var(--text-muted);
+font-size: 12px;
+}
+.footer-text a {
+color: var(--text-secondary);
+text-decoration: none;
+transition: var(--transition);
+}
+.footer-text a:hover { color: var(--gold-light); }
+.footer-social {
+display: flex;
+gap: 10px;
+}
+.footer-social a {
+width: 34px;
+height: 34px;
+border-radius: 50%;
+background: var(--bg-input);
+border: 1px solid var(--border-color);
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--text-secondary);
+transition: var(--transition);
+text-decoration: none;
+}
+.footer-social a:hover {
+border-color: var(--gold);
+color: var(--gold-light);
+transform: translateY(-2px);
+}
+
+/* ===== POPUP ===== */
+.popup-overlay {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.92);
+z-index: 9999;
+padding: 12px;
+backdrop-filter: blur(8px);
+}
+.popup-overlay.show { display: flex; align-items: center; justify-content: center; }
+.popup-content {
+background: var(--bg-card);
+border-radius: var(--radius);
+width: 100%;
+max-width: 1200px;
+height: 92vh;
+display: flex;
+flex-direction: column;
+border: 1px solid var(--border-color);
+box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+}
+.popup-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 14px 20px;
+border-bottom: 1px solid var(--border-color);
+flex-wrap: wrap;
+gap: 8px;
+}
+.popup-header h2 {
+font-size: 17px;
+color: var(--text-primary);
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.popup-header h2 small {
+font-size: 12px;
+font-weight: 400;
+color: var(--text-secondary);
+}
+.popup-body {
+flex: 1;
+overflow: hidden;
+position: relative;
+background: var(--bg-dark);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.popup-body canvas {
+display: block;
+background: var(--bg-dark);
+cursor: crosshair;
+max-width: 100%;
+max-height: 100%;
+object-fit: contain;
+}
+.popup-toolbar {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+padding: 10px 16px;
+background: var(--bg-card);
+border-top: 1px solid var(--border-color);
+align-items: center;
+border-radius: 0 0 var(--radius) var(--radius);
+}
+.popup-toolbar .spacer { flex: 1; }
+.popup-toolbar .point-info {
+color: var(--text-secondary);
+font-size: 12px;
+padding: 4px 12px;
+background: var(--bg-input);
+border-radius: 20px;
+border: 1px solid var(--border-color);
+}
+.popup-toolbar .hint {
+color: var(--text-muted);
+font-size: 12px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+.app-container { padding: 10px 10px 24px; }
+.header { padding: 14px 16px; flex-direction: column; text-align: center; }
+.header-left { flex-direction: column; }
+.header-title { font-size: 20px; }
+.header-right { width: 100%; justify-content: center; }
+.card { padding: 14px; }
+.denom-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; }
+.denom-btn .note-img { height: 40px; font-size: 28px; }
+.result-value { font-size: 30px; }
+.popup-content { height: 96vh; border-radius: 16px; }
+.popup-toolbar { padding: 8px 10px; gap: 4px; }
+.popup-toolbar .btn { padding: 6px 12px; font-size: 11px; }
+.footer { flex-direction: column; text-align: center; }
+.ad-container { min-height: 60px; padding: 10px; }
+}
+@media (max-width: 480px) {
+.denom-grid { grid-template-columns: repeat(3, 1fr); }
+.result-details { grid-template-columns: 1fr 1fr; }
+}
+
+.mt-8 { margin-top: 8px; }
+.mt-12 { margin-top: 12px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.text-center { text-align: center; }
+.text-muted { color: var(--text-muted); }
+.flex { display: flex; }
+.gap-8 { gap: 8px; }
+.hidden { display: none !important; }
+.point-count { color: var(--text-muted); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+<div class="header-left">
+<div class="header-logo">🇮🇳</div>
+<div>
+<div class="header-title">Mutilated Note Calculator</div>
+<div class="header-subtitle">Instant Valuation • Free Online Tool</div>
+</div>
+</div>
+<div class="header-right">
+<span class="header-badge gold"><i class="fas fa-shield-alt"></i> 100% Free</span>
+<span class="header-badge"><i class="fas fa-clock"></i> Instant Results</span>
+</div>
+</header>
+
+<!-- ===== AD ===== -->
+<div class="ad-container" id="topAd">
+<div>
+<div class="ad-label">— Advertisement —</div>
+<div style="font-size:14px; color:var(--text-secondary);">
+<i class="fas fa-ad"></i> Google AdSense Space (970x90)
+</div>
+</div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div class="main-grid">
+
+<!-- LEFT COLUMN -->
+<div>
+<!-- Step 1: Denomination -->
+<div class="card">
+<div class="card-title">
+<i class="fas fa-coins"></i> Step 1: Select Denomination
+</div>
+<div class="denom-tabs">
+<div class="denom-series">
+<div class="series-label">🇮🇳 Mahatma Gandhi (New) Series</div>
+<div class="denom-grid" id="denomGridNew"></div>
+</div>
+<div class="denom-series">
+<div class="series-label">🇮🇳 Mahatma Gandhi (Old) Series</div>
+<div class="denom-grid" id="denomGridOld"></div>
+</div>
+</div>
+</div>
+
+<!-- Step 2: Upload -->
+<div class="card mt-16">
+<div class="card-title">
+<i class="fas fa-upload"></i> Step 2: Upload Mutilated Note
+</div>
+<div class="upload-area" id="uploadArea">
+<div class="upload-icon"><i class="fas fa-image"></i></div>
+<div class="upload-text">Click or drag to upload note image</div>
+<div class="upload-sub">Supports JPG, PNG, WEBP • Max 10MB</div>
+<input type="file" id="fileInput" accept="image/*">
+<div class="file-name hidden" id="fileName"></div>
+</div>
+<div class="preview-container" id="previewContainer">
+<canvas id="mainCanvas"></canvas>
+<div class="preview-actions">
+<button class="btn btn-primary btn-sm" id="openEditorBtn">
+<i class="fas fa-pen"></i> Edit Points
+</button>
+<button class="btn btn-outline btn-sm" id="undoBtn">
+<i class="fas fa-undo"></i> Undo
+</button>
+<button class="btn btn-outline btn-sm" id="clearBtn">
+<i class="fas fa-trash"></i> Clear
+</button>
+<span style="flex:1;"></span>
+<span class="point-count" id="pointCount">0 points</span>
+</div>
+</div>
+</div>
+
+<!-- Step 3: Calculate -->
+<div class="card mt-16">
+<button class="btn btn-gold btn-block btn-lg" id="calculateBtn">
+<i class="fas fa-calculator"></i> Calculate Note Value
+</button>
+<div style="margin-top:8px; font-size:11px; color:var(--text-muted); text-align:center;">
+<i class="fas fa-info-circle"></i> Based on RBI Note Refund Rules, 2018
+</div>
+</div>
+</div>
+
+<!-- RIGHT COLUMN -->
+<div>
+<!-- Result -->
+<div class="card">
+<div class="card-title">
+<i class="fas fa-chart-bar"></i> Valuation Result
+</div>
+<div class="result-card" id="resultCard">
+<div class="result-value" id="resultValue">
+₹—
+<span class="badge badge-pending" id="resultBadge">Pending</span>
+</div>
+<div class="result-details" id="resultDetails">
+<div class="result-detail-item">
+<div class="label">Piece Area</div>
+<div class="value" id="detailArea">—</div>
+</div>
+<div class="result-detail-item">
+<div class="label">Real Area</div>
+<div class="value" id="detailReal">—</div>
+</div>
+<div class="result-detail-item">
+<div class="label">Full Note</div>
+<div class="value" id="detailFull">—</div>
+</div>
+<div class="result-detail-item">
+<div class="label">Percentage</div>
+<div class="value" id="detailPct">—</div>
+</div>
+</div>
+</div>
+<div style="margin-top:10px; font-size:12px; color:var(--text-muted);">
+<i class="fas fa-info-circle"></i>
+Upload a note, mark the largest undivided piece, and calculate instantly.
+</div>
+</div>
+
+<!-- Rules -->
+<div class="card mt-16">
+<div class="card-title">
+<i class="fas fa-gavel"></i> RBI Rules (Single Largest Piece)
+</div>
+<table class="rules-table">
+<thead>
+<tr>
+<th>Denomination</th>
+<th>Full Value</th>
+<th>Half Value</th>
+<th>Reject</th>
+</tr>
+</thead>
+<tbody id="rulesBody">
+<tr>
+<td>₹10</td>
+<td><span class="status-dot full"></span> ≥50%</td>
+<td>—</td>
+<td><span class="status-dot reject"></span> &lt;50%</td>
+</tr>
+<tr>
+<td>₹20</td>
+<td><span class="status-dot full"></span> ≥50%</td>
+<td>—</td>
+<td><span class="status-dot reject"></span> &lt;50%</td>
+</tr>
+<tr>
+<td>₹50</td>
+<td><span class="status-dot full"></span> ≥80%</td>
+<td><span class="status-dot half"></span> 40–80%</td>
+<td><span class="status-dot reject"></span> &lt;40%</td>
+</tr>
+<tr>
+<td>₹100</td>
+<td><span class="status-dot full"></span> ≥80%</td>
+<td><span class="status-dot half"></span> 40–80%</td>
+<td><span class="status-dot reject"></span> &lt;40%</td>
+</tr>
+<tr>
+<td>₹200</td>
+<td><span class="status-dot full"></span> ≥80%</td>
+<td><span class="status-dot half"></span> 40–80%</td>
+<td><span class="status-dot reject"></span> &lt;40%</td>
+</tr>
+<tr>
+<td>₹500</td>
+<td><span class="status-dot full"></span> ≥80%</td>
+<td><span class="status-dot half"></span> 40–80%</td>
+<td><span class="status-dot reject"></span> &lt;40%</td>
+</tr>
+<tr>
+<td>₹2000</td>
+<td><span class="status-dot full"></span> ≥80%</td>
+<td><span class="status-dot half"></span> 40–80%</td>
+<td><span class="status-dot reject"></span> &lt;40%</td>
+</tr>
+</tbody>
+</table>
+<div style="margin-top:10px; font-size:11px; color:var(--text-muted);">
+<i class="fas fa-info-circle"></i>
+Based on RBI (Note Refund) Amendment Rules, 2018
+</div>
+</div>
+
+<!-- Trust Badges -->
+<div class="card mt-16">
+<div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+<div style="text-align:center; padding:6px 10px;">
+<div style="font-size:22px;">🔒</div>
+<div style="font-size:10px; color:var(--text-muted);">100% Secure</div>
+</div>
+<div style="text-align:center; padding:6px 10px;">
+<div style="font-size:22px;">⚡</div>
+<div style="font-size:10px; color:var(--text-muted);">Instant Results</div>
+</div>
+<div style="text-align:center; padding:6px 10px;">
+<div style="font-size:22px;">🆓</div>
+<div style="font-size:10px; color:var(--text-muted);">Free to Use</div>
+</div>
+<div style="text-align:center; padding:6px 10px;">
+<div style="font-size:22px;">📱</div>
+<div style="font-size:10px; color:var(--text-muted);">Mobile Friendly</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+<div class="footer-text">
+© 2026 Mutilated Note Calculator •
+<a href="#">Privacy Policy</a> •
+<a href="#">Terms of Use</a>
+</div>
+<div class="footer-social">
+<a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+<a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+<a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+<a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+</div>
+</footer>
+</div>
+
+<!-- ===== POPUP EDITOR ===== -->
+<div class="popup-overlay" id="popupOverlay">
+<div class="popup-content">
+<div class="popup-header">
+<h2>
+✏️ Mark the Largest Undivided Piece
+<small id="popupPointCount">0 points</small>
+</h2>
+<button class="btn btn-danger btn-sm" id="popupCloseBtn">
+<i class="fas fa-times"></i> Close
+</button>
+</div>
+<div class="popup-body">
+<canvas id="popupCanvas"></canvas>
+</div>
+<div class="popup-toolbar">
+<button class="btn btn-success btn-sm" id="popupAddBtn">
+<i class="fas fa-plus"></i> Add
+</button>
+<button class="btn btn-outline btn-sm" id="popupUndoBtn">
+<i class="fas fa-undo"></i> Undo
+</button>
+<button class="btn btn-outline btn-sm" id="popupClearBtn">
+<i class="fas fa-trash"></i> Clear
+</button>
+<span class="spacer"></span>
+<span class="hint"><i class="fas fa-mouse-pointer"></i> Click on image to add points</span>
+<span class="point-info" id="popupPointInfo">0 pts</span>
+<button class="btn btn-gold btn-sm" id="popupDoneBtn">
+<i class="fas fa-check"></i> Done
+</button>
+</div>
+</div>
+</div>
+
+<script>
+(function() {
+// ============================================================
+// DATA: Currency notes with dimensions (cm)
+// ============================================================
+const NOTE_DATA = {
+'10_new': { area: 77.49, full: 38.75, half: null, w: 12.3, h: 6.3, label: '₹10', series: 'New' },
+'20_new': { area: 81.27, full: 40.64, half: null, w: 12.9, h: 6.3, label: '₹20', series: 'New' },
+'50_new': { area: 89.10, full: 71.28, half: 35.64, w: 13.5, h: 6.6, label: '₹50', series: 'New' },
+'100_new': { area: 93.72, full: 74.98, half: 37.49, w: 14.2, h: 6.6, label: '₹100', series: 'New' },
+'200_new': { area: 96.36, full: 77.09, half: 38.54, w: 14.6, h: 6.6, label: '₹200', series: 'New' },
+'500_new': { area: 99.00, full: 79.20, half: 39.60, w: 15.0, h: 6.6, label: '₹500', series: 'New' },
+'2000_new':{ area: 109.56, full: 87.65, half: 43.82, w: 16.6, h: 6.6, label: '₹2000', series: 'New' },
+'10_old': { area: 63.00, full: 31.50, half: null, w: 10.0, h: 6.3, label: '₹10', series: 'Old' },
+'20_old': { area: 67.00, full: 33.50, half: null, w: 10.5, h: 6.3, label: '₹20', series: 'Old' },
+'50_old': { area: 73.50, full: 58.80, half: 29.40, w: 11.5, h: 6.4, label: '₹50', series: 'Old' },
+'100_old': { area: 78.00, full: 62.40, half: 31.20, w: 12.0, h: 6.5, label: '₹100', series: 'Old' },
+'500_old': { area: 84.00, full: 67.20, half: 33.60, w: 13.0, h: 6.5, label: '₹500', series: 'Old' },
+'1000_old':{ area: 90.00, full: 72.00, half: 36.00, w: 13.5, h: 6.6, label: '₹1000', series: 'Old' }
+};
+
+// ============================================================
+// DENOMINATION DATA FOR UI
+// ============================================================
+const DENOM_ITEMS = {
+new: [
+{ id: '10_new', value: '₹10', icon: '🔟' },
+{ id: '20_new', value: '₹20', icon: '💰' },
+{ id: '50_new', value: '₹50', icon: '💵' },
+{ id: '100_new', value: '₹100', icon: '💵' },
+{ id: '200_new', value: '₹200', icon: '💵' },
+{ id: '500_new', value: '₹500', icon: '💵' },
+{ id: '2000_new', value: '₹2000', icon: '💵' }
+],
+old: [
+{ id: '10_old', value: '₹10', icon: '🔟' },
+{ id: '20_old', value: '₹20', icon: '💰' },
+{ id: '50_old', value: '₹50', icon: '💵' },
+{ id: '100_old', value: '₹100', icon: '💵' },
+{ id: '500_old', value: '₹500', icon: '💵' },
+{ id: '1000_old', value: '₹1000', icon: '💵' }
+]
+};
+
+// ============================================================
+// DOM REFS
+// ============================================================
+const mainCanvas = document.getElementById('mainCanvas');
+const mainCtx = mainCanvas.getContext('2d');
+const popupCanvas = document.getElementById('popupCanvas');
+const popupCtx = popupCanvas.getContext('2d');
+const fileInput = document.getElementById('fileInput');
+const uploadArea = document.getElementById('uploadArea');
+const fileName = document.getElementById('fileName');
+const previewContainer = document.getElementById('previewContainer');
+const pointCount = document.getElementById('pointCount');
+const resultValue = document.getElementById('resultValue');
+const resultBadge = document.getElementById('resultBadge');
+const detailArea = document.getElementById('detailArea');
+const detailReal = document.getElementById('detailReal');
+const detailFull = document.getElementById('detailFull');
+const detailPct = document.getElementById('detailPct');
+const openEditorBtn = document.getElementById('openEditorBtn');
+const undoBtn = document.getElementById('undoBtn');
+const clearBtn = document.getElementById('clearBtn');
+const calculateBtn = document.getElementById('calculateBtn');
+
+const popupOverlay = document.getElementById('popupOverlay');
+const popupCloseBtn = document.getElementById('popupCloseBtn');
+const popupAddBtn = document.getElementById('popupAddBtn');
+const popupUndoBtn = document.getElementById('popupUndoBtn');
+const popupClearBtn = document.getElementById('popupClearBtn');
+const popupDoneBtn = document.getElementById('popupDoneBtn');
+const popupPointInfo = document.getElementById('popupPointInfo');
+const popupPointCount = document.getElementById('popupPointCount');
+
+const denomGridNew = document.getElementById('denomGridNew');
+const denomGridOld = document.getElementById('denomGridOld');
+
+// ============================================================
+// STATE
+// ============================================================
+let points = [];
+let image = new Image();
+let hasImage = false;
+let isCalibrated = false;
+let calibPixelsPerCm = 118.11;
+let currentDenomId = '50_new';
+let noteBounds = null;
+let zoom = 1;
+let panX = 0, panY = 0;
+let imageData = null;
+let isImageLoaded = false;
+
+// ============================================================
+// RENDER DENOMINATION BUTTONS
+// ============================================================
+function renderDenomButtons() {
+denomGridNew.innerHTML = '';
+DENOM_ITEMS.new.forEach(item => {
+const btn = createDenomButton(item);
+denomGridNew.appendChild(btn);
+});
+
+denomGridOld.innerHTML = '';
+DENOM_ITEMS.old.forEach(item => {
+const btn = createDenomButton(item);
+denomGridOld.appendChild(btn);
+});
+}
+
+function createDenomButton(item) {
+const btn = document.createElement('button');
+btn.className = 'denom-btn' + (item.id === currentDenomId ? ' active' : '');
+btn.dataset.id = item.id;
+btn.innerHTML = `
+<div class="note-img">${item.icon}</div>
+<div class="note-value">${item.value}</div>
+<div class="note-series">${item.id.includes('new') ? 'New Series' : 'Old Series'}</div>
+<span class="check-mark"><i class="fas fa-check"></i></span>
+`;
+btn.addEventListener('click', () => {
+document.querySelectorAll('.denom-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+currentDenomId = item.id;
+if (hasImage && isImageLoaded) {
+reCalibrate();
+}
+});
+return btn;
+}
+
+// ============================================================
+// UPLOAD HANDLING
+// ============================================================
+uploadArea.addEventListener('click', () => fileInput.click());
+uploadArea.addEventListener('dragover', (e) => {
+e.preventDefault();
+uploadArea.classList.add('dragover');
+});
+uploadArea.addEventListener('dragleave', () => {
+uploadArea.classList.remove('dragover');
+});
+uploadArea.addEventListener('drop', (e) => {
+e.preventDefault();
+uploadArea.classList.remove('dragover');
+if (e.dataTransfer.files.length) {
+fileInput.files = e.dataTransfer.files;
+handleFile(e.dataTransfer.files[0]);
+}
+});
+
+fileInput.addEventListener('change', () => {
+if (fileInput.files.length) {
+handleFile(fileInput.files[0]);
+}
+});
+
+function handleFile(file) {
+if (!file.type.startsWith('image/')) {
+alert('Please upload an image file.');
+return;
+}
+fileName.textContent = '📎 ' + file.name;
+fileName.classList.remove('hidden');
+
+const reader = new FileReader();
+reader.onload = (e) => {
+image.src = e.target.result;
+image.onload = () => {
+isImageLoaded = true;
+mainCanvas.width = image.width;
+mainCanvas.height = image.height;
+popupCanvas.width = image.width;
+popupCanvas.height = image.height;
+hasImage = true;
+points = [];
+noteBounds = null;
+isCalibrated = false;
+zoom = 1;
+panX = 0; panY = 0;
+previewContainer.classList.add('show');
+
+const tempCanvas = document.createElement('canvas');
+tempCanvas.width = image.width;
+tempCanvas.height = image.height;
+const tempCtx = tempCanvas.getContext('2d');
+tempCtx.drawImage(image, 0, 0);
+imageData = tempCtx.getImageData(0, 0, image.width, image.height);
+
+reCalibrate();
+renderMain();
+updateUI();
+};
+};
+reader.readAsDataURL(file);
+}
+
+function reCalibrate() {
+if (!imageData) return;
+autoCalibrate(imageData, currentDenomId).then(success => {
+if (success) {
+renderMain();
+updateUI();
+}
+});
+}
+
+// ============================================================
+// AUTO-CALIBRATION
+// ============================================================
+function autoCalibrate(imageData, denomId) {
+return new Promise((resolve) => {
+setTimeout(() => {
+try {
+const data = imageData.data;
+const w = imageData.width;
+const h = imageData.height;
+const noteInfo = NOTE_DATA[denomId];
+if (!noteInfo) { resolve(false); return; }
+
+const grayscale = new Uint8Array(w * h);
+for (let i = 0; i < w * h; i++) {
+const idx = i * 4;
+grayscale[i] = (data[idx] + data[idx+1] + data[idx+2]) / 3;
+}
+
+const edges = [];
+const threshold = 30;
+for (let y = 5; y < h - 5; y += 2) {
+for (let x = 5; x < w - 5; x += 2) {
+const idx = y * w + x;
+const gx = grayscale[idx + 1] - grayscale[idx - 1];
+const gy = grayscale[idx + w] - grayscale[idx - w];
+const mag = Math.sqrt(gx*gx + gy*gy);
+if (mag > threshold) {
+edges.push({x, y, mag});
+}
+}
+}
+
+if (edges.length < 100) { resolve(false); return; }
+
+const sortedX = edges.map(e => e.x).sort((a,b) => a-b);
+const sortedY = edges.map(e => e.y).sort((a,b) => a-b);
+
+const p5 = Math.floor(edges.length * 0.05);
+const p95 = Math.floor(edges.length * 0.95);
+
+let left = sortedX[p5];
+let right = sortedX[p95];
+let top = sortedY[p5];
+let bottom = sortedY[p95];
+
+const pad = Math.min((right - left) * 0.02, 20);
+left = Math.max(0, left - pad);
+right = Math.min(w, right + pad);
+top = Math.max(0, top - pad);
+bottom = Math.min(h, bottom + pad);
+
+const noteWidthPx = right - left;
+const realWidth = noteInfo.w;
+calibPixelsPerCm = noteWidthPx / realWidth;
+
+if (calibPixelsPerCm > 50 && calibPixelsPerCm < 500) {
+isCalibrated = true;
+noteBounds = { left, right, top, bottom };
+resolve(true);
+} else {
+resolve(false);
+}
+
+} catch(e) {
+console.error('Auto-calibration error:', e);
+resolve(false);
+}
+}, 100);
+});
+}
+
+// ============================================================
+// RENDER FUNCTIONS
+// ============================================================
+function renderMain() {
+mainCtx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+mainCtx.save();
+mainCtx.translate(panX, panY);
+mainCtx.scale(zoom, zoom);
+
+if (hasImage && isImageLoaded && image.src) {
+mainCtx.drawImage(image, 0, 0);
+}
+
+if (noteBounds && isCalibrated) {
+const { left, right, top, bottom } = noteBounds;
+mainCtx.strokeStyle = 'rgba(42, 138, 201, 0.3)';
+mainCtx.lineWidth = 2 / zoom;
+mainCtx.setLineDash([8/zoom, 6/zoom]);
+mainCtx.strokeRect(left, top, right - left, bottom - top);
+mainCtx.setLineDash([]);
+}
+
+drawPolygon(mainCtx, points, zoom);
+mainCtx.restore();
+updateUI();
+}
+
+function drawPolygon(ctx, pts, zoomLevel = 1) {
+if (pts.length === 0) return;
+
+if (pts.length >= 3) {
+ctx.beginPath();
+ctx.moveTo(pts[0].x, pts[0].y);
+for (let i=1; i<pts.length; i++) {
+ctx.lineTo(pts[i].x, pts[i].y);
+}
+ctx.closePath();
+ctx.fillStyle = 'rgba(46, 204, 113, 0.12)';
+ctx.fill();
+ctx.shadowColor = 'rgba(46, 204, 113, 0.3)';
+ctx.shadowBlur = 10 / zoomLevel;
+ctx.strokeStyle = '#2ecc71';
+ctx.lineWidth = 2.5 / zoomLevel;
+ctx.stroke();
+ctx.shadowBlur = 0;
+}
+
+pts.forEach((p, idx) => {
+const radius = 16 / zoomLevel;
+const gradient = ctx.createRadialGradient(
+p.x - radius*0.3, p.y - radius*0.3, radius*0.1,
+p.x, p.y, radius
+);
+gradient.addColorStop(0, '#f1948a');
+gradient.addColorStop(1, '#e74c3c');
+
+ctx.shadowColor = 'rgba(231, 76, 60, 0.3)';
+ctx.shadowBlur = 12 / zoomLevel;
+ctx.beginPath();
+ctx.arc(p.x, p.y, radius, 0, 2 * Math.PI);
+ctx.fillStyle = gradient;
+ctx.fill();
+ctx.shadowBlur = 0;
+ctx.strokeStyle = '#ffffff';
+ctx.lineWidth = 2.5 / zoomLevel;
+ctx.stroke();
+
+ctx.fillStyle = '#ffffff';
+ctx.font = `bold ${18/zoomLevel}px Inter, sans-serif`;
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.shadowColor = 'rgba(0,0,0,0.5)';
+ctx.shadowBlur = 4 / zoomLevel;
+ctx.fillText(idx + 1, p.x, p.y + 1/zoomLevel);
+ctx.shadowBlur = 0;
+});
+}
+
+// ============================================================
+// POPUP EDITOR - FIXED!
+// ============================================================
+function openPopup() {
+if (!hasImage || !isImageLoaded) {
+alert('Please upload an image first.');
+return;
+}
+
+// Make sure popup canvas matches image dimensions
+popupCanvas.width = image.width;
+popupCanvas.height = image.height;
+
+// Fit the canvas within the popup body
+const container = popupCanvas.parentElement;
+const containerWidth = container.clientWidth;
+const containerHeight = container.clientHeight;
+const aspectRatio = image.width / image.height;
+let displayWidth, displayHeight;
+
+if (containerWidth / containerHeight > aspectRatio) {
+displayHeight = containerHeight;
+displayWidth = containerHeight * aspectRatio;
+} else {
+displayWidth = containerWidth;
+displayHeight = containerWidth / aspectRatio;
+}
+
+popupCanvas.style.width = displayWidth + 'px';
+popupCanvas.style.height = displayHeight + 'px';
+popupCanvas.style.margin = 'auto';
+
+renderPopup();
+popupOverlay.classList.add('show');
+updatePopupInfo();
+document.body.style.overflow = 'hidden';
+}
+
+function renderPopup() {
+popupCtx.clearRect(0, 0, popupCanvas.width, popupCanvas.height);
+
+// Draw the image - THIS WAS THE FIX!
+if (hasImage && isImageLoaded && image.src) {
+popupCtx.drawImage(image, 0, 0);
+} else {
+// Fallback: show placeholder
+popupCtx.fillStyle = '#0a1422';
+popupCtx.fillRect(0, 0, popupCanvas.width, popupCanvas.height);
+popupCtx.fillStyle = '#4a6f92';
+popupCtx.font = '24px Inter, sans-serif';
+popupCtx.textAlign = 'center';
+popupCtx.fillText('Loading image...', popupCanvas.width/2, popupCanvas.height/2);
+}
+
+// Draw note bounds
+if (noteBounds && isCalibrated) {
+const { left, right, top, bottom } = noteBounds;
+popupCtx.strokeStyle = 'rgba(42, 138, 201, 0.3)';
+popupCtx.lineWidth = 2;
+popupCtx.setLineDash([8, 6]);
+popupCtx.strokeRect(left, top, right - left, bottom - top);
+popupCtx.setLineDash([]);
+popupCtx.fillStyle = 'rgba(42, 138, 201, 0.05)';
+popupCtx.fillRect(left, top, right - left, bottom - top);
+}
+
+// Draw points
+drawPolygon(popupCtx, points, 1);
+
+// Instructions
+if (points.length === 0) {
+popupCtx.fillStyle = 'rgba(255,255,255,0.4)';
+popupCtx.font = '22px Inter, sans-serif';
+popupCtx.textAlign = 'center';
+popupCtx.fillText('👆 Click on the image to add points', popupCanvas.width/2, 50);
+popupCtx.font = '14px Inter, sans-serif';
+popupCtx.fillStyle = 'rgba(255,255,255,0.25)';
+popupCtx.fillText('Mark the largest undivided piece of the note', popupCanvas.width/2, 80);
+}
+}
+
+function updatePopupInfo() {
+popupPointInfo.textContent = points.length + ' pts';
+popupPointCount.textContent = points.length + ' points';
+}
+
+// ============================================================
+// POPUP INTERACTIONS
+// ============================================================
+function getPopupCoords(e) {
+const rect = popupCanvas.getBoundingClientRect();
+const scaleX = popupCanvas.width / rect.width;
+const scaleY = popupCanvas.height / rect.height;
+let clientX, clientY;
+if (e.touches) {
+clientX = e.touches[0].clientX;
+clientY = e.touches[0].clientY;
+e.preventDefault();
+} else {
+clientX = e.clientX;
+clientY = e.clientY;
+}
+const x = (clientX - rect.left) * scaleX;
+const y = (clientY - rect.top) * scaleY;
+return {
+x: Math.min(popupCanvas.width, Math.max(0, x)),
+y: Math.min(popupCanvas.height, Math.max(0, y))
+};
+}
+
+popupCanvas.addEventListener('click', (e) => {
+const pos = getPopupCoords(e);
+points.push({x: pos.x, y: pos.y});
+renderPopup();
+updatePopupInfo();
+});
+
+popupCanvas.addEventListener('touchstart', (e) => {
+if (e.touches.length === 1) {
+const pos = getPopupCoords(e);
+points.push({x: pos.x, y: pos.y});
+renderPopup();
+updatePopupInfo();
+e.preventDefault();
+}
+}, { passive: false });
+
+popupAddBtn.addEventListener('click', () => {
+if (points.length === 0) {
+points.push({x: popupCanvas.width/2, y: popupCanvas.height/2});
+} else {
+const avgX = points.reduce((s, p) => s + p.x, 0) / points.length;
+const avgY = points.reduce((s, p) => s + p.y, 0) / points.length;
+points.push({
+x: Math.min(popupCanvas.width, Math.max(0, avgX + 60)),
+y: Math.min(popupCanvas.height, Math.max(0, avgY + 60))
+});
+}
+renderPopup();
+updatePopupInfo();
+});
+
+popupUndoBtn.addEventListener('click', () => {
+points.pop();
+renderPopup();
+updatePopupInfo();
+});
+
+popupClearBtn.addEventListener('click', () => {
+if (points.length === 0) return;
+if (confirm('Clear all points?')) {
+points = [];
+renderPopup();
+updatePopupInfo();
+}
+});
+
+popupDoneBtn.addEventListener('click', () => {
+if (points.length < 3) {
+alert('Please add at least 3 points to form a polygon.');
+return;
+}
+popupOverlay.classList.remove('show');
+document.body.style.overflow = '';
+renderMain();
+updateUI();
+});
+
+popupCloseBtn.addEventListener('click', () => {
+popupOverlay.classList.remove('show');
+document.body.style.overflow = '';
+renderMain();
+});
+
+popupOverlay.addEventListener('click', (e) => {
+if (e.target === popupOverlay) {
+popupOverlay.classList.remove('show');
+document.body.style.overflow = '';
+renderMain();
+}
+});
+
+// ============================================================
+// MAIN BUTTONS
+// ============================================================
+openEditorBtn.addEventListener('click', openPopup);
+
+undoBtn.addEventListener('click', () => {
+points.pop();
+renderMain();
+});
+
+clearBtn.addEventListener('click', () => {
+points = [];
+renderMain();
+resultValue.innerHTML = '₹— <span class="badge badge-pending">Pending</span>';
+detailArea.textContent = '—';
+detailReal.textContent = '—';
+detailFull.textContent = '—';
+detailPct.textContent = '—';
+});
+
+// ============================================================
+// CALCULATE
+// ============================================================
+calculateBtn.addEventListener('click', () => {
+if (!hasImage || !isImageLoaded) {
+alert('Please upload an image first.');
+return;
+}
+if (points.length < 3) {
+alert('Add at least 3 points using the Editor.');
+return;
+}
+if (!isCalibrated) {
+alert('Auto-calibration failed. Please use a clearer image.');
+return;
+}
+
+let areaPx = 0;
+for (let i=0; i<points.length; i++) {
+const j = (i+1) % points.length;
+areaPx += points[i].x * points[j].y;
+areaPx -= points[j].x * points[i].y;
+}
+areaPx = Math.abs(areaPx) / 2;
+
+const cmPerPx = 1 / calibPixelsPerCm;
+const areaCm2 = areaPx * cmPerPx * cmPerPx;
+
+const data = NOTE_DATA[currentDenomId];
+if (!data) { alert('Note data not found.'); return; }
+
+const pct = (areaCm2 / data.area) * 100;
+const denomValue = parseInt(data.label.replace('₹', ''));
+
+let valueText, badgeClass, badgeText;
+
+if (denomValue <= 20) {
+if (pct >= 50) {
+valueText = `₹${denomValue}`;
+badgeClass = 'badge-full';
+badgeText = `Full (${pct.toFixed(1)}%)`;
+} else {
+valueText = '₹0';
+badgeClass = 'badge-reject';
+badgeText = `Rejected (${pct.toFixed(1)}%)`;
+}
+} else {
+if (pct >= 80) {
+valueText = `₹${denomValue}`;
+badgeClass = 'badge-full';
+badgeText = `Full (${pct.toFixed(1)}%)`;
+} else if (pct >= 40) {
+valueText = `₹${denomValue/2}`;
+badgeClass = 'badge-half';
+badgeText = `Half (${pct.toFixed(1)}%)`;
+} else {
+valueText = '₹0';
+badgeClass = 'badge-reject';
+badgeText = `Rejected (${pct.toFixed(1)}%)`;
+}
+}
+
+resultValue.innerHTML = `${valueText} <span class="badge ${badgeClass}">${badgeText}</span>`;
+detailArea.textContent = areaPx.toFixed(0) + ' px²';
+detailReal.textContent = areaCm2.toFixed(2) + ' cm²';
+detailFull.textContent = data.area + ' cm²';
+detailPct.textContent = pct.toFixed(1) + '%';
+
+if (window.innerWidth < 768) {
+document.querySelector('.card:has(.result-card)')?.scrollIntoView({ behavior: 'smooth' });
+}
+});
+
+// ============================================================
+// UI HELPERS
+// ============================================================
+function updateUI() {
+pointCount.textContent = points.length + ' points';
+}
+
+// ============================================================
+// WINDOW RESIZE HANDLER
+// ============================================================
+window.addEventListener('resize', () => {
+if (popupOverlay.classList.contains('show') && hasImage && isImageLoaded) {
+const container = popupCanvas.parentElement;
+const containerWidth = container.clientWidth;
+const containerHeight = container.clientHeight;
+const aspectRatio = image.width / image.height;
+let displayWidth, displayHeight;
+
+if (containerWidth / containerHeight > aspectRatio) {
+displayHeight = containerHeight;
+displayWidth = containerHeight * aspectRatio;
+} else {
+displayWidth = containerWidth;
+displayHeight = containerWidth / aspectRatio;
+}
+
+popupCanvas.style.width = displayWidth + 'px';
+popupCanvas.style.height = displayHeight + 'px';
+}
+});
+
+// ============================================================
+// KEYBOARD SHORTCUTS
+// ============================================================
+document.addEventListener('keydown', (e) => {
+if (e.key === 'Escape' && popupOverlay.classList.contains('show')) {
+popupOverlay.classList.remove('show');
+document.body.style.overflow = '';
+renderMain();
+}
+if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
+e.preventDefault();
+undoBtn.click();
+}
+});
+
+// ============================================================
+// INIT
+// ============================================================
+renderDenomButtons();
+renderMain();
+
+console.log('🇮🇳 Mutilated Note Calculator loaded!');
+console.log('📊 Based on RBI Note Refund Rules, 2018');
+console.log('💡 Select denomination, upload note, mark points, calculate.');
+console.log('✅ Popup editor image fix applied!');
+})();
+</script>
+
+</body>
+</html>
