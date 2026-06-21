@@ -1,0 +1,2 @@
+# CurrencyValue
+Mutilated note value
